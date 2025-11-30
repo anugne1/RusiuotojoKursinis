@@ -34,16 +34,16 @@ public class Rusiuotojas {
         ivestiThread.start();
 
         //zaidimas
-        while (zaidejas.getGyvybes() > 0 && zaidejas.getTaskai() < 100) {
+        while (zaidejas.getGyvybes() > 0 && zaidejas.getTaskai() < Constants.MAX_TASKAI) {
             Deze deze = konvejeris.sugeneruotiDeze();
             System.out.println("\nNauja dėžė: " + deze.getTipas());
             konvejeris.rodytiKritima(deze);
             //ziurim ar gera sklende pasirinkta
             zaidejas.tikrintiSklende(deze);
-            zaidejas.rodytiBusena();
+            //zaidejas.rodytiBusena();
 
             try {
-                Thread.sleep(1500); // laikas per kuri sugeneruoja kita deze
+                Thread.sleep(Constants.TARPAI_TARP_DEZIU_MS); // laikas per kuri sugeneruoja kita deze
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
             }

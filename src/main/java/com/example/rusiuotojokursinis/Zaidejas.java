@@ -1,9 +1,14 @@
 package com.example.rusiuotojokursinis;
 
-class Zaidejas {
-    private int gyvybes = 3;
+public class Zaidejas {
+
+    private int gyvybes = Constants.PRADINES_GYVYBES;
     private int taskai = 0;
     private int sklendesPadetis = 1;
+
+    //private final TaskuStrategija strategija = new PaprastaStrategija();
+    private final TaskuStrategija strategija = new ComboStrategija();
+
 
     public int getGyvybes() {
         return gyvybes;
@@ -15,33 +20,34 @@ class Zaidejas {
 
     public int getSklendesPadetis() {
         return sklendesPadetis;
-    }                                      //getteriai
+    }
 
     public void keistiSklende(int numeris) {
         if (numeris >= 1 && numeris <= 3) {
             sklendesPadetis = numeris;
-            System.out.println("Sklendė perjungta į " + numeris + " poziciją");
+            System.out.println("Sklendė perjungta į: " + numeris);
         }
     }
 
     public void tikrintiSklende(Deze deze) {
-        char laukiamasTipas = switch (sklendesPadetis) {
-            case 1 -> 'A';
-            case 2 -> 'B';
-            case 3 -> 'C';
-            default -> '?';
-        };
+        boolean teisinga = false;
+        char tipas = deze.getTipas();
 
-        if (deze.getTipas() == laukiamasTipas) {
-            taskai += 10;
-            System.out.println("+++Teisingai! +10 taškų.");
-        } else {
-            gyvybes--;
-            System.out.println("---Klaida! Prarasta viena gyvybė.");
+        if (sklendesPadetis == 1 && tipas == 'A') teisinga = true;
+        if (sklendesPadetis == 2 && tipas == 'B') teisinga = true;
+        if (sklendesPadetis == 3 && tipas == 'C') teisinga = true;
+
+        taskai += strategija.skaiciuotiTaskus(teisinga);
+        String zinute = strategija.gautiZinute();
+        if (!zinute.isEmpty()) {
+            System.out.println("!" + zinute + "!");
         }
-    }
 
-    public void rodytiBusena() {
-        System.out.println("Taškai: " + taskai + " | Gyvybės: " + gyvybes);
+        if (!teisinga) {
+            gyvybes--;
+            System.out.println("---Klaida! Gyvybės: " + gyvybes);
+        } else {
+            System.out.println("+++Teisingai! Taškai: " + taskai);
+        }
     }
 }

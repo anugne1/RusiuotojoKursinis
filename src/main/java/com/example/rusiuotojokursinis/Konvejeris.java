@@ -2,23 +2,22 @@ package com.example.rusiuotojokursinis;
 
 import java.util.Random;
 
-class Konvejeris {
-    private final Random random = new Random();
+public class Konvejeris {
+
+    private final DezeFactory factory = new RandomDezeFactory();
 
     public Deze sugeneruotiDeze() {
-        char[] tipai = {'A', 'B', 'C'};
-        char atsitiktinis = tipai[random.nextInt(tipai.length)];
-        return new Deze(atsitiktinis);
+        return factory.sukurti();
     }
 
     public void rodytiKritima(Deze deze) {
         try {
-            for (int i = 0; i < 10; i++) {
-                System.out.println("|*|");
-                Thread.sleep(2000);
+            for (int i = 0; i < 8; i++) {
+                deze.update();
+                Thread.sleep(Constants.KRITIMO_GREITIS_MS);
             }
         } catch (InterruptedException e) {
-            Thread.currentThread().interrupt(); //sustabdom o ne isjungiam
+            Thread.currentThread().interrupt();
         }
         System.out.println("[" + deze.getTipas() + "] pasiekė sklendę!");
     }
