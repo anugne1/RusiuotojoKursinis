@@ -1,7 +1,5 @@
 package com.example.rusiuotojokursinis;
 
-import java.util.Random;
-
 public class Konvejeris {
 
     private final DezeFactory factory = new RandomDezeFactory();

@@ -1,6 +1,5 @@
 package com.example.rusiuotojokursinis;
 
-import java.util.Random;
 import java.util.Scanner;
 import java.util.concurrent.atomic.AtomicBoolean;
 

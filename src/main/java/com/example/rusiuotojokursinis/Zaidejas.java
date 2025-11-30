@@ -6,7 +6,7 @@ public class Zaidejas {
     private int taskai = 0;
     private int sklendesPadetis = 1;
 
-    //private final TaskuStrategija strategija = new PaprastaStrategija();
+
     private final TaskuStrategija strategija = new ComboStrategija();
 
 
@@ -16,10 +16,6 @@ public class Zaidejas {
 
     public int getTaskai() {
         return taskai;
-    }
-
-    public int getSklendesPadetis() {
-        return sklendesPadetis;
     }
 
     public void keistiSklende(int numeris) {
