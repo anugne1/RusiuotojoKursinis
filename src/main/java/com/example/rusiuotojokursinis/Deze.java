@@ -1,5 +1,5 @@
-package com.example.rusiuotojokursinis;
 
+package com.example.rusiuotojokursinis;
 public class Deze extends GameObject {
     private final char tipas;
 

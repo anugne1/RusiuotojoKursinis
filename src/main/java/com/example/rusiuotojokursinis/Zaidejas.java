@@ -6,6 +6,9 @@ public class Zaidejas {
     private int taskai = 0;
     private int sklendesPadetis = 1;
 
+    public int getSklendesPadetis() {
+        return sklendesPadetis;
+    }
 
     private final TaskuStrategija strategija = new ComboStrategija();
 
@@ -46,4 +49,5 @@ public class Zaidejas {
             System.out.println("+++Teisingai! Taškai: " + taskai);
         }
     }
+
 }
