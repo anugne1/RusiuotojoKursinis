@@ -1,7 +1,6 @@
 package com.example.rusiuotojokursinis;
 
 public class PaprastaStrategija implements TaskuStrategija {
-    //Strategy implementation
     @Override
     public int skaiciuotiTaskus(boolean teisinga) {
         if (teisinga) {

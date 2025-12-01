@@ -16,10 +16,10 @@ public class ComboStrategija implements TaskuStrategija {
             if (teisinguEile == 3) {
                 teisinguEile = 0;
                 zinute = "COMBO BONUS";
-                return 20;      //combo
+                return 20;
             }
 
-            return 10; // normalus teisingas atsakymas
+            return 10;
         }
 
         teisinguEile = 0;
